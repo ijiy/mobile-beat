@@ -97,9 +97,18 @@
 		}
 		fontFix();
 
-		document.ontouchmove = document.ontouchstart = function (a) {
-			a.preventDefault();
-		}
+
+		addEventListener('touchmove', function(event) {
+			event.preventDefault();
+		}, {
+			passive: false,
+		});
+
+		addEventListener('touchstart', function(event) {
+			event.preventDefault();
+		}, {
+			passive: false,
+		});
 	</script>
 </head>
 <body>
@@ -166,7 +175,7 @@
 				<div class="con">
 					<h2>恭喜您获得金币</h2>
 					<div>
-						<a class="back-index" href="#">领取金币</a>
+						<a class="back-index" onclick="location.reload()">领取金币</a>
 					</div>
 				</div>
 			</div>
@@ -210,7 +219,8 @@
 				critDmg: 4, // 暴击伤害, 攻击力的倍数 [1, +)
 				passSingle: 0, // 单次关卡 [0, 10]
 				passTotal: 0, // 总关卡 [0, 未定义最高关卡]
-				gold: 0 // 金币
+				gold: 0, // 金币,
+				passMax: 4,
 			};
 
 			// 魔王数据
@@ -241,11 +251,6 @@
 					name: '千年树妖',
 					hp: 1000,
 					gold: 13
-				},
-				{
-					name: '堕落的蜘蛛精',
-					hp: 1000,
-					gold: 14
 				},
 			];
 		}
