@@ -1,90 +1,97 @@
 <!DOCTYPE html>
 <html lang="zh-Hans-CN">
 <head>
-	<meta charset="UTF-8">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<title>疯狂打怪兽</title>
-	<style>
-		body, html {
-			height: 100%;
-		}
-		html {
-			overflow: hidden;
-			font-size: 100px;
-			margin: 0 auto;
-		}
-		@media (min-width: 640px) {
-			html {
-				width: 640px;
-				margin: 0 auto;
-			}
-		}
-		body {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			width: 6.4rem;
-			margin: 0 auto;
-			font: .12rem \5FAE\8F6F\96C5\9ED1;
-			background: #2D404F;
-			text-rendering: optimizeLegibility;
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>疯狂打怪兽</title>
+    <style>
+        body, html {
+            height: 100%;
+        }
 
-			-webkit-font-smoothing: antialiased;
-			-webkit-tap-highlight-color: transparent;
-		}
+        html {
+            overflow: hidden;
+            font-size: 100px;
+            margin: 0 auto;
+        }
 
-		.load {
-			display: -webkit-box;
-			-webkit-box-pack: center;
-			-webkit-box-align: center;
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: 998;
-			width: 100%;
-			height: 100%;
-			font: 12px \5FAE\8F6F\96C5\9ED1;
-			color: #FFF;
-			background: #000 url(images/loading.jpg) no-repeat 0 0 / 100% auto;
+        @media (min-width: 640px) {
+            html {
+                width: 640px;
+                margin: 0 auto;
+            }
+        }
 
-			-webkit-transition: .3s linear;
-			transition: .3s linear;
-		}
-		.load>div {
-			display: -webkit-box;
-			-webkit-box-pack: center;
-			-webkit-box-align: center;
-			position: absolute;
-			top: 8.63rem;
-			left: 0;
-			right: 0;
-			width: 4.21rem;
-			height: .46rem;
-			margin: 0 auto;
-			border: .03rem solid #371514;
-			border-radius: .03rem;
-			background: #522d25;
-		}
-		.load>div div {
-			position: relative;
-			width: 4.03rem;
-			height: .29rem;
-			border: .02rem solid #371514;
-			border-bottom: none;
-		}
-		.load span {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 0;
-			height: 100%;
-			background: #fd9830;
-			background: -webkit-linear-gradient(top, #ffd173, #ff6e07);
-		}
-	</style>
-	<script>
+        body {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 6.4rem;
+            margin: 0 auto;
+            font: .12rem \5FAE\8F6F\96C5\9ED1;
+            background: #2D404F;
+            text-rendering: optimizeLegibility;
+
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .load {
+            display: -webkit-box;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 998;
+            width: 100%;
+            height: 100%;
+            font: 12px \5FAE\8F6F\96C5\9ED1;
+            color: #FFF;
+            background: #000 url(images/loading.jpg) no-repeat 0 0 / 100% auto;
+
+            -webkit-transition: .3s linear;
+            transition: .3s linear;
+        }
+
+        .load > div {
+            display: -webkit-box;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            position: absolute;
+            top: 8.63rem;
+            left: 0;
+            right: 0;
+            width: 4.21rem;
+            height: .46rem;
+            margin: 0 auto;
+            border: .03rem solid #371514;
+            border-radius: .03rem;
+            background: #522d25;
+        }
+
+        .load > div div {
+            position: relative;
+            width: 4.03rem;
+            height: .29rem;
+            border: .02rem solid #371514;
+            border-bottom: none;
+        }
+
+        .load span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #fd9830;
+            background: -webkit-linear-gradient(top, #ffd173, #ff6e07);
+        }
+    </style>
+    <script>
 		var html = document.querySelector('html'),
 			font = parseInt(window.getComputedStyle(html, null)['fontSize']),
 			port;
@@ -93,174 +100,191 @@
 			port = html.offsetWidth / 640 * (a || 1);
 			html.style.fontSize = font * port + 'px';
 		}
+
 		fontFix();
 
 
-		addEventListener('touchmove', function(event) {
+		addEventListener('touchmove', function (event) {
 			event.preventDefault();
 		}, {
 			passive: false,
 		});
 
-		addEventListener('touchstart', function(event) {
+		addEventListener('touchstart', function (event) {
 			event.preventDefault();
 		}, {
 			passive: false,
 		});
-	</script>
+    </script>
 </head>
 <body>
-	<div class="load">
-		<div><div><span></span></div></div>
-	</div>
-	<div class="wrap">
-		<div class="field">
-			<div class="aside">
-				<div class="board ellipsis">
-					<div class="hp-bar">
-						<div class="hp-pro">
-							<span></span>
-							<span></span>
-							<span></span>
-						</div>
-						<p class="role-hp font1" title="HP"></p>
-						<p class="role-name"></p>
-					</div>
-					<strong class="timer font1"></strong>
-					<p class="gold font1"></p>
-				</div>
-				<a class="tzmw"><i></i></a>
+<div class="load">
+    <div>
+        <div><span></span></div>
+    </div>
+</div>
+<div class="wrap">
+    <div class="field">
+        <div class="aside">
+            <div class="board ellipsis">
+                <div class="hp-bar">
+                    <div class="hp-pro">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <p class="role-hp font1" title="HP"></p>
+                    <p class="role-name"></p>
+                </div>
+                <strong class="timer font1"></strong>
+                <p class="gold font1"></p>
+            </div>
+            <a class="tzmw"><i></i></a>
 
-				<div class="hurt"></div>
-			</div>
+            <div class="hurt"></div>
+        </div>
 
-			<div class="role">
-				<div class="head">
-					<span class="ear-l"></span>
-					<span class="ear-r"></span>
-					<span class="face"></span>
-					<span class="eye"></span>
-					<span class="brow"></span>
-					<span class="mouth"></span>
-					<span class="helmet"></span>
-				</div>
-				<div class="body">
-					<span class="hand-l"></span>
-					<span class="hand-r"></span>
-					<span class="chest"></span>
-					<span class="foot"></span>
-				</div>
-			</div>
+        <div class="role">
+            <div class="head">
+                <span class="ear-l"></span>
+                <span class="ear-r"></span>
+                <span class="face"></span>
+                <span class="eye"></span>
+                <span class="brow"></span>
+                <span class="mouth"></span>
+                <span class="helmet"></span>
+            </div>
+            <div class="body">
+                <span class="hand-l"></span>
+                <span class="hand-r"></span>
+                <span class="chest"></span>
+                <span class="foot"></span>
+            </div>
+        </div>
 
-			<div class="hero">
-				<span></span>
-				<b><i></i></b>
-			</div>
-		</div>
-		<div class="pass">
-			<i class="p1"></i>
-			<i class="p"></i>
-			<i class="p0"></i>
-		</div>
-		<div class="touch"></div>
-	</div>
+        <div class="hero">
+            <span></span>
+            <b><i></i></b>
+        </div>
+    </div>
+    <div class="pass">
+        <i class="p1"></i>
+        <i class="p"></i>
+        <i class="p0"></i>
+    </div>
+    <div class="touch"></div>
+</div>
 
-	<div class="tip"><span></span></div>
+<div class="tip"><span></span></div>
 
-	<div class="dialog">
-		<div class="first dbg-1">
-			<div class="dbg-2">
-				<div class="con">
-					<h2>恭喜您获得金币</h2>
-					<div>
-						<a class="back-index" onclick="location.reload()">领取金币</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script defer>
-		var	VERSION = 1.2,
-			IMGURL = '';
+<div class="dialog">
+    <div class="first dbg-1">
+        <div class="dbg-2">
+            <div class="con">
+                <h2>恭喜您获得金币</h2>
+                <div>
+                    <a class="back-index" onclick="location.reload()">领取金币</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script defer>
+	var VERSION = 1.2,
+		IMGURL = '';
 
-		(function () {
-			var	a = document.createElement('link'),
-				b = '?ver=' + VERSION;
+	(function () {
+		var a = document.createElement('link'),
+			b = '?ver=' + VERSION;
 
-			a.rel = 'stylesheet';
-			a.href = IMGURL+ 'css/index.css' + b;
-			document.head.appendChild(a);
-			document.write('<script async src=' + IMGURL + 'js/index.js' + b + '><\/script>');
-		})();
+		a.rel = 'stylesheet';
+		a.href = IMGURL + 'css/index.css' + b;
+		document.head.appendChild(a);
+		document.write('<script async src=' + IMGURL + 'js/index.js' + b + '><\/script>');
+	})();
 
-		function heightFix() {
-			var	a = 640 / 1000,
-				b = document.body,
-				c = b.clientWidth / b.clientHeight;
+	function heightFix() {
+		var a = 640 / 1000,
+			b = document.body,
+			c = b.clientWidth / b.clientHeight;
 
-			// 避免文档高度被输入法压缩
-			b.style.minHeight = b.clientHeight + 'px';
+		// 避免文档高度被输入法压缩
+		b.style.minHeight = b.clientHeight + 'px';
 
-			c > a && fontFix(a / c);
+		c > a && fontFix(a / c);
+	}
+
+	heightFix();
+
+	/************** 下面为数据处理 **************/
+
+	// 请求: 初始化数据
+	function heroData() {
+		hero_object = {
+			click: 1, // 允许操作, 0为活动维护中或停止状态
+			mw: 0, // 1为魔王出现, 或未打死
+			atc: 88, // 攻击力
+			critRate: .05, // 暴击率, 百分比转小数 [0, 1]
+			critDmg: 4, // 暴击伤害, 攻击力的倍数 [1, +)
+			passSingle: 0, // 单次关卡 [0, 10]
+			passTotal: 0, // 总关卡 [0, 未定义最高关卡]
+			gold: 0, // 金币,
+			passMax: 4,
+		};
+
+		// 魔王数据
+		tzmw_object = {
+			mw: 0, // 1为魔王出现
+			hp: 5000, // 魔王血量
+			gold: 60 // 魔王分数
+		};
+
+		// 怪物数据
+		role_list = [
+			{
+				name: '金字塔的木乃伊', // 怪物名字
+				hp: 1000, // 怪物血量
+				gold: 10 // 怪物分数
+			},
+			{
+				name: '呆板的哥布林',
+				hp: 1000,
+				gold: 11
+			},
+			{
+				name: '恶心的黏兽',
+				hp: 1000,
+				gold: 12
+			},
+			{
+				name: '千年树妖',
+				hp: 1000,
+				gold: 13
+			},
+		];
+	}
+
+	// 上传: 怪物死亡的回调函数
+	function dieBack() {
+		if (hero_object.passTotal === 1 && hero_object.passSingle === 0) {
+			$('.back-index').href = '#';
+			$('.first.dbg-1 h2').innerHTML += hero_object.gold;
+			showDialog('first');
 		}
-		heightFix();
+	}
 
-		/************** 下面为数据处理 **************/
+    // 禁止双击
+	let lastTouchEnd = 0;
 
-		// 请求: 初始化数据
-		function heroData() {
-			hero_object = {
-				click: 1, // 允许操作, 0为活动维护中或停止状态
-				mw: 0, // 1为魔王出现, 或未打死
-				atc: 88, // 攻击力
-				critRate: .05, // 暴击率, 百分比转小数 [0, 1]
-				critDmg: 4, // 暴击伤害, 攻击力的倍数 [1, +)
-				passSingle: 0, // 单次关卡 [0, 10]
-				passTotal: 0, // 总关卡 [0, 未定义最高关卡]
-				gold: 0, // 金币,
-				passMax: 4,
-			};
+	document.documentElement.addEventListener('touchend', function (event) {
+		let now = Date.now();
 
-			// 魔王数据
-			tzmw_object = {
-				mw: 0, // 1为魔王出现
-				hp: 5000, // 魔王血量
-				gold: 60 // 魔王分数
-			};
-
-			// 怪物数据
-			role_list = [
-				{
-					name: '金字塔的木乃伊', // 怪物名字
-					hp: 1000, // 怪物血量
-					gold: 10 // 怪物分数
-				},
-				{
-					name: '呆板的哥布林',
-					hp: 1000,
-					gold: 11
-				},
-				{
-					name: '恶心的黏兽',
-					hp: 1000,
-					gold: 12
-				},
-				{
-					name: '千年树妖',
-					hp: 1000,
-					gold: 13
-				},
-			];
+		if (now - lastTouchEnd <= 300) {
+			event.preventDefault();
 		}
 
-		// 上传: 怪物死亡的回调函数
-		function dieBack() {
-			if (hero_object.passTotal === 1 && hero_object.passSingle === 0) {
-				$('.back-index').href = '#';
-				$('.first.dbg-1 h2').innerHTML += hero_object.gold;
-				showDialog('first');
-			}
-		}
-	</script>
+		lastTouchEnd = now;
+	}, false);
+</script>
 </body>
 </html>
