@@ -94,7 +94,7 @@ function $(a, b) {
 function each(a, b) {
 	a = a || 0;
 	for (var c = a.length, d = c || parseInt(a) || 1, g = 0; g < d; g++) b(c ? a[g] : 1 < d ? g : a, g, a ? d : 0)
-};
+}
 
 var body = $("body", html),
 	wrap = $(".wrap", html),
@@ -133,8 +133,10 @@ var body = $("body", html),
 function touchFix(a, b) {
 	var c = getTouch(b),
 		e = a.getBoundingClientRect(),
-		d = c.pageX - e.left,
-		c = c.pageY - e.top;
+		d = c.pageX - e.left;
+
+	c = c.pageY - e.top;
+
 	return 0 > d || d > getStyle(a, "width") || 0 > c || c > getStyle(a, "height") ? !1 : !0
 }
 
@@ -205,7 +207,7 @@ function heroAtc(a) {
 	requestAnimationFrame(function() {
 		addClass(fields.hero, a)
 	})
-};
+}
 
 function roleDie() {
 	hero_object.gold += role_object.gold;
@@ -216,7 +218,7 @@ function roleDie() {
 	boards.pro.parentNode.style.display = "none";
 	dieBack();
 	changeRole()
-};
+}
 
 function changeRole() {
 	role_object = {};
@@ -270,7 +272,7 @@ function changeRole() {
 
 function formatTime(a) {
 	return formatNum(a / 1E3) + ":" + parseInt(a % 1E3 / 100);
-};
+}
 
 var load_text = 0,
 	load_width = getStyle(load_span.parentNode, "width");
