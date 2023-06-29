@@ -72,9 +72,13 @@ function getStyle(a, b) {
 }
 
 function imgLoad(a, b) {
-	document.all ? a.onreadystatechange = function() {
-		"loaded" != a.readyState && "complete" != a.readyState || b()
-	} : a.onload = b
+	if (a.complete) {
+		a.onreadystatechange = function() {
+			"loaded" !== a.readyState && "complete" !== a.readyState || b();
+		}
+	} else {
+		a.onload = b;
+	}
 }
 
 function formatNum(a) {
