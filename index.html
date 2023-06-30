@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>疯狂打怪兽</title>
 	<style>
         body, html {
@@ -95,12 +96,11 @@
 			port;
 
 		function fontFix(a) {
-			port = html.offsetWidth / 640 * (a || 1);
+			port = window.innerWidth / 640 * (a || 1);
 			html.style.fontSize = font * port + 'px';
 		}
 
 		fontFix();
-
 
 		addEventListener('touchmove', function (event) {
 			event.preventDefault();
@@ -201,12 +201,12 @@
 	</div>
 </div>
 <script defer>
-	var VERSION = 1.0,
-		IMGURL = '';
+	const VERSION = 1.0;
+	var IMGURL = '';
 
 	(function () {
-		var a = document.createElement('link'),
-			b = '?ver=' + VERSION;
+		const a = document.createElement('link');
+		const b = '?ver=' + VERSION;
 
 		a.rel = 'stylesheet';
 		a.href = IMGURL + 'css/index.css' + b;
@@ -215,17 +215,18 @@
 	})();
 
 	function heightFix() {
-		var a = 640 / 1000,
-			b = document.body,
-			c = b.clientWidth / b.clientHeight;
+		const a = 640 / 1000;
+		const c = window.innerWidth / window.innerHeight;
 
 		// 避免文档高度被输入法压缩
-		b.style.minHeight = b.clientHeight + 'px';
+		document.body.style.minHeight = window.innerHeight + 'px';
 
-		c > a && fontFix(a / c);
+		fontFix(c > a ? a / c : 1);
 	}
 
 	heightFix();
+
+	window.onresize = heightFix;
 
 	/************** 下面为数据处理 **************/
 

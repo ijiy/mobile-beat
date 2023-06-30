@@ -1,50 +1,61 @@
 var isTouch = "ontouchstart" in window;
 
 function eventType(a) {
-	if (!isTouch) switch (a) {
-		case "touchstart":
-			return "mousedown";
-		case "touchend":
-			return "mouseup";
-		case "touchmove":
-			return "mousemove"
+	if (!isTouch) {
+		switch (a) {
+			case "touchstart":
+				return "mousedown";
+			case "touchend":
+				return "mouseup";
+			case "touchmove":
+				return "mousemove";
+		}
 	}
 }
 
 function addEvent(a, b, c) {
-	a.addEventListener(eventType(b) || b, c)
+	a.addEventListener(eventType(b) || b, c);
 }
 
 function getTouch(a) {
-	return isTouch ? a.changedTouches[0] : a
+	return isTouch ? a.changedTouches[0] : a;
 }
 
 function hasClass(a, b) {
-	return (" " + a.className + " ")
-		.match(" " + b + " ") ? 1 : 0
+	return (" " + a.className + " ").match(" " + b + " ") ? 1 : 0;
 }
 
 function addClass(a, b) {
-	hasClass(a, b) || (a.className += a.className ? " " + b : b)
+	hasClass(a, b) || (a.className += a.className ? " " + b : b);
 }
 
 function removeClass(a, b) {
 	a.className = (" " + a.className + " ")
 		.replace(" " + b + " ", " ")
-		.replace(/(^\s*)|(\s*$)/g, "")
+		.replace(/(^\s*)|(\s*$)/g, "");
 }
 
 function ajax(a, b, c, d, g) {
 	var e = new XMLHttpRequest,
 		h = null;
+
 	e.onreadystatechange = function() {
-		4 == e.readyState && (200 <= e.status && 300 > e.status || 304 == e.status) ? d && d(e.responseText) : g && g(e.responseText)
+		e.readyState === 4 && (200 <= e.status && 300 > e.status || e.status === 304) ? d && d(e.responseText) : g && g(e.responseText)
 	};
-	if (c)
-		if (/get/gi.test(a))
-			for (var k = "?", f = 0; f < c.length; f++) b += k + c[f][0] + "=" + c[f][1], k = "&";
-		else
-			for (h = new FormData, f = 0; f < c.length; f++) h.append(c[f][0], c[f][1]);
+
+	if (c) {
+		if (/get/gi.test(a)) {
+			for (var k = "?", f = 0; f < c.length; f++) {
+				b += k + c[f][0] + "=" + c[f][1];
+				k = "&";
+			}
+		} else {
+			for (h = new FormData, f = 0; f < c.length; f++) {
+				h.append(c[f][0], c[f][1]);
+			}
+		}
+	}
+
 	e.open(a, b);
 	e.send(h)
 }
